@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640px,height=1009px, initial-scale=1.0,user-scalable=no">
+    <title>宣传</title>
+    <style>
+		body{
+			max-width=640px;
+			max-height=1009px;
+		}
+		@font-face {
+			font-family: tip;
+			src: url('tip.ttf');
+		}
+		.meizhe{
+			background-image:url('imgs/xc_bj.jpg');
+			background-size: 100% 100%;
+			width: 640px;
+			height: 1008px;
+			margin: 0 auto;
+			position: relative;
+		}
+		#p1{
+			position: absolute;
+			top: 220px;
+			left: 100px;
+			display: none;
+		}
+		#p2{
+			position: absolute;
+			top: 120px;
+			left: 350px;
+			display: none;
+		}
+		#p3{
+			position: absolute;
+			top: 240px;
+			left: 460px;
+			display: none;
+
+		}
+		#center{
+			background-repeat: no-repeat;
+			border: none;
+			width: 200px;
+			position: absolute;
+			top: 42%;
+			left: 35%;
+		}
+		#tip{
+			position: absolute;
+			top: 48%;
+			left:42%;
+			font-size: 30px;
+			font-family: tip;
+			color: #f1a5e2;
+			text-shadow: 0 0 10px #f5b2e8,0 0 20px #f5b2e8,0 0 30px #f5b2e8,0 0 40px #f5b2e8;
+		}
+		#p4{
+			position: absolute;
+			top: 600px;
+			left: 80px;
+			display: none;
+
+		}
+		#p5{
+			position: absolute;
+			top: 800px;
+			left: 100px;
+			display: none;
+
+		}
+		#p6{
+			position: absolute;
+			top: 750px;
+			left: 50px;
+			display: none;
+
+		}
+		#p7{
+			position: absolute;
+			top: 600px;
+			left: 400px;
+			display: none;
+
+		}
+		#step{
+			position: absolute;
+			left: 58%;
+			top: 90%;
+			animation:moveNext 1.5s linear infinite;
+		}
+		@keyframes moveNext {
+		    0% {
+		      left: 59%; /*开始为原始大小*/
+		    }
+		    25% {
+		      left: 57%; /*放大1.1倍*/
+		    }
+		    50% {
+		      left: 59%;
+		    }
+		    75% {
+		      left: 57%;
+		    }
+		  }
+    </style>
+</head>
+<body>
+    <script src="js/pixi.min.js">
+    	
+    </script>
+    <script language="JavaScript">
+    	var i=0;
+    	function jump(){
+      		i++;
+      		document.getElementById('p'+i).style.display="block";
+   		}
+    </script>
+    <div class='meizhe'>
+			<div><img class='p1' id='p1' src="imgs/p1.png" width="250px"></div>
+	    	<div><img class='p2' id='p2' src="imgs/p2.png" width="200px"></div>
+			<div><img class='p1' id='p3' src="imgs/p3.png" width="170px"></div>
+			<!--
+            	作者：offline
+            	时间：2022-07-04
+            	描述：
+            	<div><img id='center' src="imgs/center.png" width="220px"></div>
+            -->
+<!--            <div><input id='center' type="button" style="background-image: url('imgs/center.png') no-repeat;" value="点击" /></div>
+-->
+			<div><img id='center' src="imgs/center.png" width="220px" onclick="jump()"></div>
+			<div id='tip'>点点心动</div>
+			<div><img class='p2' id='p4' src="imgs/p4.png" width="180px"></div>
+			<div><img class='p1' id='p5' src="imgs/p5.png" width="240px"></div>
+			<div><img class='p2' id='p6' src="imgs/p6.png" width="160px"></div>
+			<div><img class='p1' id='p7' src="imgs/p7.png" width="160px"></div>
+			<div><a href="index.html"><img id='step' src="imgs/step.png" height="90px" width="260px"></a></div>
+    </div>
+</body>
+</html>
