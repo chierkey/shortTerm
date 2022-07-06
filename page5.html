@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>美颜拼图</title>
+		<style>
+		.meizhe{
+			background-image:url('imgs/pintu_bj.jpg');
+			background-size: 100% 100%;
+			width: 640px;
+			height: 1008px;
+			margin: 0 auto;
+			position: relative;
+		}
+		@font-face {
+		font-family: title2;
+		src: url('word.ttf');
+		}
+		@font-face {
+		font-family: tip;
+		src: url('tip.ttf');
+		}
+		#begin{
+			position: absolute;
+			width: 480px;
+			height: 480px;
+			float: left;
+			margin: 50px;
+			padding: 30px;
+			list-style-type: none;
+			background-color: plum;
+			border-radius: 20px;
+		}
+		li {
+			float: left;
+		}
+		#confirm{
+			position: absolute;
+			left: 35%;
+			top: 70%;
+			animation:moveNext 1.5s linear infinite;
+
+		}
+		#tip_6{
+			position: absolute;
+			left: 40%;
+			top: 87%;
+			font-size: 30px;
+			font-family: tip;
+		}
+		#tip_5{
+			position: absolute;
+			left: 33%;
+			top: 60%;
+			font-size: 30px;
+			font-family: title2;
+		}
+		@keyframes moveNext {
+		    0% {
+		      transform: scale(1.2); /*开始为原始大小*/
+		    }
+		    25% {
+		      transform: scale(1); /*放大1.1倍*/
+		    }
+		    50% {
+		      transform: scale(1.2);
+		    }
+		    75% {
+		      transform: scale(1);
+		    }
+		  }
+		#step{
+			position: absolute;
+			left: 58%;
+			top: 90%;
+			animation:moveNext1 1.5s linear infinite;
+		}
+		@keyframes moveNext1 {
+		    0% {
+		      left: 59%; /*开始为原始大小*/
+		    }
+		    25% {
+		      left: 57%; /*放大1.1倍*/
+		    }
+		    50% {
+		      left: 59%;
+		    }
+		    75% {
+		      left: 57%;
+		    }
+		  }
+		</style>
+	</head>
+	<body>
+		<div class='meizhe'>
+    		<ul id='begin'>
+    		<li ondrop="drop(event)" ondragover="dropOver(event)">
+				<img src="imgs/tlogo_08.png" alt="" width="160px" height="160px" draggable="true" id="drag1" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+			</li>
+			<li ondrop="drop(event)" ondragover="dropOver(event)">
+				<img src="imgs/tlogo_04.png" alt="" width="160px" height="160px" draggable="true" id="drag2" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+			</li>
+			<li ondrop="drop(event)" ondragover="dropOver(event)">
+				<img src="imgs/tlogo_07.png" alt="" width="160px" height="160px" draggable="true" id="drag3" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+			</li>
+			<li ondrop="drop(event)" ondragover="dropOver(event)">
+				<img src="imgs/tlogo_01.png" alt="" width="160px" height="160px" draggable="true" id="drag4" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+			</li>
+			<li ondrop="drop(event)" ondragover="dropOver(event)">
+				<img src="imgs/tlogo_03.png" alt="" width="160px" height="160px" draggable="true" id="drag5" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+			</li>
+			<li ondrop="drop(event)" ondragover="dropOver(event)">
+				<img src="imgs/tlogo_06.png" alt="" width="160px" height="160px" draggable="true" id="drag6" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+			</li>
+			<li ondrop="drop(event)" ondragover="dropOver(event)">
+				<img src="imgs/tlogo_02.png" alt="" width="160px" height="160px" draggable="true" id="drag7" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+			</li>
+			<li ondrop="drop(event)" ondragover="dropOver(event)">
+				<img src="imgs/tlogo_08.png" alt="" width="160px" height="160px" draggable="true" id="drag8" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+			</li>
+			<li ondrop="drop(event)" ondragover="dropOver(event)">
+				<img src="imgs/tlogo_05.png" alt="" width="160px" height="160px" draggable="true" id="drag9" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
+			</li>
+    		</ul>
+    		<div><img id='confirm' src="imgs/confirm.png" width="220px" onclick="check()"></div>
+			<div id="tip_5">请拖拽完成拼图~</div>
+			<div id="tip_6"></div>
+			<div><a href="index.html"><img id='step' src="imgs/step.png" height="90px" width="260px"></a></div>
+    	</div>
+		<script language="JavaScript">
+		var start_index;
+		var end_index;
+		function dragStart(event) {
+			console.log("dragStart: " + event.target.id);
+			start_index = event.target.id;
+		}
+		function dragEnd(event) {
+			event.preventDefault();
+		}
+		function dropOver(event) {
+			event.preventDefault();
+		}
+		function drop(event) {
+			event.preventDefault();
+			console.log("drop: "+event.target.id);
+			end_index = event.target.id;
+			// 交换id1和id2两个元素的attri属性值
+			exchange(start_index, end_index, "src");
+			// 检查拼图是否已完成，若完成显示对应文本
+//			check();
+		}
+		function exchange(id1, id2, attri){
+			x1=document.getElementById(id1);
+			x2=document.getElementById(id2);
+			var attri1=x1.getAttribute(attri);
+			x1.setAttribute(attri,x2.getAttribute(attri));
+			x2.setAttribute(attri,attri1);
+			// 添加代码：交换id1和id2两个元素的attri属性值
+		}
+		function check(){
+			var x = document.getElementById('tip_6');
+			var y=document.getElementsByTagName("img");
+			var a,b,c,i;
+			for(i=0;i<9;i++)
+			{
+				a=y[i].getAttribute("src");
+				b=a.lastIndexOf(".");
+				c=Number(a.slice(b-2,b));
+				if(c!=i+1){
+					x.style.color='red';
+					x.innerHTML = "再试一次吧!";
+					return false;
+				}
+			}
+			console.log("");
+			x.style.color='blue';
+			x.innerHTML = "恭喜你拼图成功！";
+		}
+		x.innerHTML = "";
+		console.log("");
+		</script>
+	</body>
+</html>
